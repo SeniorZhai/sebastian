@@ -30,22 +30,26 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * The base interface for work requests.
+ * work request 接口
  */
 
 public abstract class WorkRequest {
 
     /**
      * The default initial backoff time (in milliseconds) for work that has to be retried.
+     * 默认重试时间
      */
     public static final long DEFAULT_BACKOFF_DELAY_MILLIS = 30000L;
 
     /**
      * The maximum backoff time (in milliseconds) for work that has to be retried.
+     * 最大重试时间
      */
     public static final long MAX_BACKOFF_MILLIS = 5 * 60 * 60 * 1000; // 5 hours.
 
     /**
      * The minimum backoff time for work (in milliseconds) that has to be retried.
+     * 最小重试时间
      */
     public static final long MIN_BACKOFF_MILLIS = 10 * 1000; // 10 seconds.
 
@@ -55,6 +59,7 @@ public abstract class WorkRequest {
 
     /**
      * @hide
+     * 限定Library内访问
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
     protected WorkRequest(@NonNull UUID id, @NonNull WorkSpec workSpec, @NonNull Set<String> tags) {
@@ -65,7 +70,7 @@ public abstract class WorkRequest {
 
     /**
      * Gets the unique identifier associated with this unit of work.
-     *
+     * 唯一标识ID
      * @return The identifier for this unit of work
      */
     public UUID getId() {
@@ -85,7 +90,7 @@ public abstract class WorkRequest {
 
     /**
      * Gets the {@link WorkSpec} associated with this unit of work.
-     *
+     * 工作单元
      * @return The {@link WorkSpec} for this unit of work
      * @hide
      */
@@ -96,7 +101,7 @@ public abstract class WorkRequest {
 
     /**
      * Gets the tags associated with this unit of work.
-     *
+     * 标签
      * @return The tags for this unit of work
      * @hide
      */
@@ -107,7 +112,7 @@ public abstract class WorkRequest {
 
     /**
      * A builder for {@link WorkRequest}.
-     *
+     * 构造器
      * @param <B> The concrete implementation of of this Builder
      * @param <W> The type of work object built by this Builder
      */
@@ -141,14 +146,14 @@ public abstract class WorkRequest {
                 long backoffDelay,
                 @NonNull TimeUnit timeUnit) {
             mBackoffCriteriaSet = true;
-            mWorkSpec.backoffPolicy = backoffPolicy;
+            mWorkSpec.backoffPolicy = backoffPolicy; // 重启时间
             mWorkSpec.setBackoffDelayDuration(timeUnit.toMillis(backoffDelay));
             return getThis();
         }
 
         /**
          * Add constraints to the {@link OneTimeWorkRequest}.
-         *
+         * 约束
          * @param constraints The constraints for the work
          * @return The current {@link Builder}
          */
@@ -171,7 +176,7 @@ public abstract class WorkRequest {
         /**
          * Add an optional tag for the work.  This is particularly useful for modules or
          * libraries who want to query for or cancel all of their own work.
-         *
+         * 添加标签
          * @param tag A tag for identifying the work in queries.
          * @return The current {@link Builder}
          */

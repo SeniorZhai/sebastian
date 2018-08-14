@@ -25,12 +25,14 @@ public enum ExistingWorkPolicy {
     /**
      * If there is existing pending work with the same unique name, cancel and delete it.  Then,
      * insert the newly-specified work.
+     * 如果存在相同任务替换它
      */
     REPLACE,
 
     /**
      * If there is existing pending work with the same unique name, do nothing.  Otherwise, insert
      * the newly-specified work.
+     * 有相同任务 什么都不做
      */
     KEEP,
 
@@ -38,6 +40,7 @@ public enum ExistingWorkPolicy {
      * If there is existing pending work with the same unique name, append the newly-specified work
      * as a child of all the leaves of that work sequence.  Otherwise, insert the newly-specified
      * work as the start of a new sequence.
+     * 有相同任务时 以新加入的任务为第一个任务
      */
     APPEND
 }

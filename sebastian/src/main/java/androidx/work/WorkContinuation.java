@@ -35,6 +35,7 @@ public abstract class WorkContinuation {
      * @param work One or more {@link OneTimeWorkRequest} to add to the {@link WorkContinuation}
      * @return A {@link WorkContinuation} that allows for further chaining of dependent
      *         {@link OneTimeWorkRequest}
+     * 接着指定
      */
     public final WorkContinuation then(@NonNull OneTimeWorkRequest... work) {
         return then(Arrays.asList(work));
@@ -108,6 +109,7 @@ public abstract class WorkContinuation {
      * @param continuations Two or more {@link WorkContinuation}s that are prerequisites for the
      *                      {@link OneTimeWorkRequest} provided.
      * @return A {@link WorkContinuation} that allows further chaining
+     * 并行两个WorkContinuation
      */
     public static WorkContinuation combine(
             @NonNull OneTimeWorkRequest work,

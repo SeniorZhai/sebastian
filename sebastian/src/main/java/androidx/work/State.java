@@ -18,43 +18,50 @@ package androidx.work;
 
 /**
  * The current status of a unit of work.
+ * work状态
  */
 public enum State {
 
     /**
      * The status for work that is enqueued (hasn't completed and isn't running)
+     * 排队中 没完成 没运行
      */
     ENQUEUED,
 
     /**
      * The status for work that is currently being executed
+     * 运行中
      */
     RUNNING,
 
     /**
      * The status for work that has completed successfully
+     * 成功
      */
     SUCCEEDED,
 
     /**
      * The status for work that has completed in a failure state
+     * 错误
      */
     FAILED,
 
     /**
      * The status for work that is currently blocked because its prerequisites haven't finished
      * successfully
+     * 阻止 其先决条件没有完成
      */
     BLOCKED,
 
     /**
      * The status for work that has been cancelled and will not execute
+     * 取消
      */
     CANCELLED;
 
     /**
      * Returns {@code true} if this State is considered finished.
-     *
+     * 是否结束 成功、失败、取消
      * @return {@code true} for {@link #SUCCEEDED}, {@link #FAILED}, and {@link #CANCELLED} States
      */
     public boolean isFinished() {

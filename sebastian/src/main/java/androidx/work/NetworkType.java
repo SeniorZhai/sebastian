@@ -18,31 +18,37 @@ package androidx.work;
 
 /**
  * The type of network required by a unit of work.
+ * 网络状态
  */
 public enum NetworkType {
 
     /**
      * A network is not required for this work.
+     * 不需要网络
      */
     NOT_REQUIRED,
 
     /**
      * Any working network connection is required for this work.
+     * 任何可用网络
      */
     CONNECTED,
 
     /**
      * An unmetered network connection is required for this work.
+     * 不计费网络 如WIFI
      */
     UNMETERED,
 
     /**
      * A non-roaming network connection is required for this work.
+     * 非漫游网络
      */
     NOT_ROAMING,
 
     /**
      * A metered network connection is required for this work.
+     * 计费网络 如4G
      */
     METERED
 }

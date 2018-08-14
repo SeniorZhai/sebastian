@@ -262,6 +262,7 @@ public class WorkManagerImpl extends WorkManager implements SynchronousWorkManag
         new WorkContinuationImpl(this, workRequest).enqueueSync();
     }
 
+    // 启动某些任务
     @Override
     public WorkContinuation beginWith(@NonNull List<OneTimeWorkRequest> work) {
         return new WorkContinuationImpl(this, work);
@@ -389,6 +390,7 @@ public class WorkManagerImpl extends WorkManager implements SynchronousWorkManag
         new PruneWorkRunnable(this).run();
     }
 
+    // 返回Worker的Status LiveData
     @Override
     public LiveData<WorkStatus> getStatusById(@NonNull UUID id) {
         WorkSpecDao dao = mWorkDatabase.workSpecDao();

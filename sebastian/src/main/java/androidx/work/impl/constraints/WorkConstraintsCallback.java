@@ -23,6 +23,7 @@ import java.util.List;
 
 /**
  * A callback for when constraints change.
+ * 约束变化回调
  */
 
 public interface WorkConstraintsCallback {

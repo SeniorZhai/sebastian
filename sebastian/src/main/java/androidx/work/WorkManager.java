@@ -140,7 +140,7 @@ public abstract class WorkManager {
 
     /**
      * Enqueues one or more items for background processing.
-     *
+     * 插入Work队列
      * @param workRequests One or more {@link WorkRequest} to enqueue
      */
     public final void enqueue(@NonNull WorkRequest... workRequests) {
@@ -258,7 +258,7 @@ public abstract class WorkManager {
     /**
      * Cancels work with the given id if it isn't finished.  Note that cancellation is a best-effort
      * policy and work that is already executing may continue to run.
-     *
+     * 根据ID取消任务
      * @param id The id of the work
      */
     public abstract void cancelWorkById(@NonNull UUID id);
@@ -266,7 +266,7 @@ public abstract class WorkManager {
     /**
      * Cancels all unfinished work with the given tag.  Note that cancellation is a best-effort
      * policy and work that is already executing may continue to run.
-     *
+     * 根据TAG取消所有任务
      * @param tag The tag used to identify the work
      */
     public abstract void cancelAllWorkByTag(@NonNull String tag);
@@ -283,10 +283,12 @@ public abstract class WorkManager {
      * Cancels all unfinished work.  <b>Use this method with extreme caution!</b>  By invoking it,
      * you will potentially affect other modules or libraries in your codebase.  It is strongly
      * recommended that you use one of the other cancellation methods at your disposal.
+     * 取消所有任务
      */
     public abstract void cancelAllWork();
 
     /**
+     * 修改已经完成的任务
      * Prunes all eligible finished work from the internal database.  Eligible work must be finished
      * ({@link State#SUCCEEDED}, {@link State#FAILED}, or {@link State#CANCELLED}), with zero
      * unfinished dependents.
@@ -314,6 +316,7 @@ public abstract class WorkManager {
      *
      * @param id The id of the work
      * @return A {@link LiveData} of the {@link WorkStatus} associated with {@code id}
+     * 根据ID获取任务状态
      */
     public abstract LiveData<WorkStatus> getStatusById(@NonNull UUID id);
 
@@ -322,6 +325,7 @@ public abstract class WorkManager {
      *
      * @param tag The tag of the work
      * @return A {@link LiveData} list of {@link WorkStatus} for work tagged with {@code tag}
+     * 根据TAG获取任务的状态
      */
     public abstract LiveData<List<WorkStatus>> getStatusesByTag(@NonNull String tag);
 

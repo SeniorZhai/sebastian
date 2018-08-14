@@ -18,16 +18,19 @@ package androidx.work;
 
 /**
  * The backoff policy to use when rescheduling work.
+ * 重试策略
  */
 public enum BackoffPolicy {
 
     /**
      * An exponentially-increasing backoff policy
+     * 成倍的策略
      */
     EXPONENTIAL,
 
     /**
      * A linearly-increasing backoff policy
+     * 线性策略
      */
     LINEAR
 }

@@ -76,6 +76,7 @@ public final class Constraints {
         return mRequiresCharging;
     }
 
+    // 充电时是否启动任务
     public void setRequiresCharging(boolean requiresCharging) {
         mRequiresCharging = requiresCharging;
     }
@@ -95,6 +96,7 @@ public final class Constraints {
 
     /**
      * @return If the constraints require battery not low status.
+     * 设备电池过低时是否启动任务
      */
     public boolean requiresBatteryNotLow() {
         return mRequiresBatteryNotLow;
@@ -191,6 +193,7 @@ public final class Constraints {
          *
          * @param requiresDeviceIdle true if device must be idle, false otherwise
          * @return current builder
+         * 设备空闲时启动任务
          */
         @RequiresApi(23)
         public Builder setRequiresDeviceIdle(boolean requiresDeviceIdle) {
@@ -230,6 +233,7 @@ public final class Constraints {
          * @param requiresStorageNotLow true if available storage should not be below critical
          *                              threshold, false otherwise
          * @return current builder
+         * 储存空间小时是否启动任务
          */
         public Builder setRequiresStorageNotLow(boolean requiresStorageNotLow) {
             this.mRequiresStorageNotLow = requiresStorageNotLow;
@@ -244,6 +248,7 @@ public final class Constraints {
          * @param triggerForDescendants {@code true} if any changes in descendants cause this
          *                              {@link WorkRequest} to run
          * @return The current {@link Builder}
+         * 指定URI更新时启动
          */
         @RequiresApi(24)
         public Builder addContentUriTrigger(Uri uri, boolean triggerForDescendants) {

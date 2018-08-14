@@ -42,6 +42,7 @@ public abstract class Worker {
 
     /**
      * The result of the Worker's computation that is returned in the {@link #doWork()} method.
+     * 任务结果
      */
     public enum Result {
         /**
