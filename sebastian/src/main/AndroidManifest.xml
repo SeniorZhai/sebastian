@@ -1,29 +1,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="androidx.work">
+    package="sebastian.work">
   <uses-permission android:name="android.permission.WAKE_LOCK" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <application>
     <provider
-        android:name="androidx.work.impl.WorkManagerInitializer"
+        android:name="sebastian.work.impl.WorkManagerInitializer"
         android:authorities="${applicationId}.workmanager-init"
         android:exported="false"
         android:multiprocess="true" />
     <service
-        android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+        android:name="sebastian.work.impl.background.systemalarm.SystemAlarmService"
         android:exported="false"
         android:enabled="@bool/enable_system_alarm_service_default" />
     <service
-        android:name="androidx.work.impl.background.systemjob.SystemJobService"
+        android:name="sebastian.work.impl.background.systemjob.SystemJobService"
         android:permission="android.permission.BIND_JOB_SERVICE"
         android:exported="true"
         android:enabled="@bool/enable_system_job_service_default" />
     <receiver
-        android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+        android:name="sebastian.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
         android:enabled="true"
         android:exported="false" />
     <receiver
-        android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+        android:name="sebastian.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
         android:enabled="false">
       <intent-filter>
         <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
@@ -31,7 +31,7 @@
       </intent-filter>
     </receiver>
     <receiver
-        android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+        android:name="sebastian.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
         android:enabled="false">
       <intent-filter>
         <action android:name="android.intent.action.BATTERY_OKAY"/>
@@ -39,7 +39,7 @@
       </intent-filter>
     </receiver>
     <receiver
-        android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+        android:name="sebastian.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
         android:enabled="false">
       <intent-filter>
         <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
@@ -47,14 +47,14 @@
       </intent-filter>
     </receiver>
     <receiver
-        android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+        android:name="sebastian.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
         android:enabled="false">
       <intent-filter>
         <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
       </intent-filter>
     </receiver>
     <receiver
-        android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+        android:name="sebastian.work.impl.background.systemalarm.RescheduleReceiver"
         android:enabled="true">
       <intent-filter>
         <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -66,7 +66,7 @@
         android:enabled="@bool/enable_system_alarm_service_default"
         android:exported="false">
       <intent-filter>
-        <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+        <action android:name="sebastian.work.impl.background.systemalarm.UpdateProxies" />
       </intent-filter>
     </receiver>
   </application>
