@@ -28,8 +28,8 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.work.Data;
-import androidx.work.WorkStatus;
+import sebastian.work.Data;
+import sebastian.work.WorkStatus;
 import com.bumptech.glide.Glide;
 
 public class BlurActivity extends AppCompatActivity {
